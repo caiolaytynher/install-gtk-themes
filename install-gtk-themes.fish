@@ -1,25 +1,34 @@
 #!/bin/fish
-# This script should be run with root privileges
 
-set -l themes_repo 'Everforest-GTK-Theme' 'Gruvbox-GTK-Theme' 'Kanagawa-GTK-Theme' 'Tokyo-Night-GTK-Theme'
+# This script should be run with root privileges and with the argument being
+# the home folder
+
+set -l home $argv[1]
+if not test -e $home
+  exit
+end
+
+set -l themes_repo 'Everforest-GTK-Theme' 'Gruvbox-GTK-Theme' 'Kanagawa-GKT-Theme' 'Tokyo-Night-GTK-Theme'
 set -l themes 'Everforest-Dark-BL' 'Gruvbox-Dark-BL' 'Kanagawa-BL' 'Tokyonight-Dark-BL'
-set -l themes_path $HOME/Programs
+set -l themes_path $home/Programs
 set -l gtk_themes_path /usr/share/themes
 
-if not test -e $HOME/Programs
-  mkdir $HOME/Programs
+if not test -e $home/Programs
+  command mkdir $home/Programs
 end
 
 # Clone repos
 for theme in $themes_repo
-  if not test -e $themes_path/$theme
-    git clone https://github.com/Fausto-Korpsvart/$theme.git $themes_path
+  if test -e $themes_path/$theme
+    command git -C $themes_path/$theme pull
+  else
+    command git -C $themes_path clone https://github.com/Fausto-Korpsvart/$theme.git
   end
 end
 
 # Copy themes to gtk themes folder
 for theme in $themes
   if not test -e $gtk_themes_path/$theme
-    cp -r $themes_path/$theme $gtk_themes_path
+    command cp -r $themes_path/$theme $gtk_themes_path
   end
 end
