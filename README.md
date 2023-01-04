@@ -1,0 +1,6 @@
+# Install GTK Themes
+
+Custom app to install the GTK themes that I've cloned from Fausto
+Korpsvart.
+
+[Fausto Korpsvart Github](https://github.com/Fausto-Korpsvart)
