@@ -7,5 +7,5 @@ with root privileges.
 ## Run command
 
 ```{fish}
-sudo fish install-gtk-themes.fish
+sudo fish install-gtk-themes.fish $HOME
 ```
