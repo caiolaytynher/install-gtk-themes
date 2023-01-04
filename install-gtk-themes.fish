@@ -3,6 +3,7 @@
 # This script should be run with root privileges and with the argument being
 # the home folder
 
+# Check if home folder exists
 set -l home $argv[1]
 if not test -e $home
   exit
@@ -13,6 +14,7 @@ set -l themes 'Everforest-Dark-BL' 'Gruvbox-Dark-BL' 'Kanagawa-BL' 'Tokyonight-D
 set -l themes_path $home/Programs
 set -l gtk_themes_path /usr/share/themes
 
+# Create Programs folder if none
 if not test -e $home/Programs
   command mkdir $home/Programs
 end
