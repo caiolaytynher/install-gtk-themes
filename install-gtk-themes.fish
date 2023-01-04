@@ -17,7 +17,7 @@ if not test -e $home/Programs
   command mkdir $home/Programs
 end
 
-# Clone repos
+# Clone or update repos
 for theme in $themes_repo
   if test -e $themes_path/$theme
     command git -C $themes_path/$theme pull
